@@ -55,7 +55,7 @@ function getDistanceFromPoint(position) {
 	
 	// If nearest point is within the search radius the user can play the game
 	if (minimum <= searchRadius){
-		alert("You're near a building! Scroll down to see the question.");
+		alert("You're in proximity of a point of interest! Scroll down to see the question.");
 	} else if (minimum > searchRadius) {
 		alert("There are no points of interest near you")
 	}
@@ -123,7 +123,8 @@ function dataUploadedAnswer() {
 	//this function listens out for the server to say that the data is ready - i.e. has state 4
 	if (client.readyState == 4) {
 		// make an alert to show the response
-		alert("Data uploaded correctly");
+		alert("Data uploaded correctly") +
+		getDistance();
 		//document.getElementById("dataUploadResult").innerHTML = "Data uploaded correctly";
 	}
 }	
