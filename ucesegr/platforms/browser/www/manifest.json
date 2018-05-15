@@ -1,10 +1,10 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "helloworld",
-  "short_name": "helloworld",
+  "name": "LocAsk",
+  "short_name": "LocAsk",
   "version": "LocAsk",
-  "description": "Hello World sample application that responds to the deviceready event.",
+  "description": "Mobile Application that tracks the device location and allows the user to answer pop-up questions",
   "author": "PhoneGap Team",
   "icons": [],
   "start_url": "index.html"

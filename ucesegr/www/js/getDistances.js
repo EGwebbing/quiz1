@@ -1,16 +1,15 @@
-// The script is based on the tutorials' code
+// This script is based on the code provided by CEGEG077 Web&Mobile tutorials
 
-// The function makes reference to another function to calculate the distances from the points.
-// It is used within the index.html file to get new questions
+// This function references another function to calculate the distances from the points of interest.
+// It is used inside the index.html file to get new questions and calls the getDistanceFromPoint function to determine users proximity
 function getDistance() {
-	alert('getting distance');
-	// getDistanceFromPoint is the function called once the distance has been found
-	navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
+	alert('Detecting distance');
+	navigator.geolocation.getCurrentPosition(getDistanceFromPoint); 
 }
 
-// global variable for the points of interest
+// global variable for the POI
 var pointlayer;
-// global variables for the question and the answers
+// global variables for questions and optional answers
 var question;
 var optionA;
 var optionB;
@@ -18,13 +17,13 @@ var optionC;
 var optionD;
 var correct;
 
-// The function calculate the dstances from each point of interest; it takes the nearest point (if it is within the search radius),
+// The function calculates the distances from each point of interest selecting the nearest point that falls within the search radius,
 // by indexing all the distance calculated, and extract the question related.
 function getDistanceFromPoint(position) {
 	// accessing to the geojson coordinates
 	var myJson = pointlayer.toGeoJSON().features; // toGeoJSON method from https://leafletjs.com/reference-1.3.0.html
 	var searchRadius = 0.1
-	var minDist = [] // empty list that will be fille dwith the distances from each point of interest
+	var minDist = [] // empty list that will be filled with the distances from each point of interest
 	// The for loop calculate the distance of the user from each point of interest
 	for (var i=0; i < myJson.length; i++){
 		var lat = myJson[i].geometry.coordinates[1];
@@ -58,10 +57,9 @@ function getDistanceFromPoint(position) {
 	if (minimum <= searchRadius){
 		alert("You're near a building! Scroll down to see the question.");
 	} else if (minimum > searchRadius) {
-		alert("You are far from the game.")
+		alert("There are no points of interest near you")
 	}
 }
-
 
 // Global variable which allows to acces the radio buttons
 var htmlCollection = document.getElementsByName('answers');
@@ -89,7 +87,7 @@ function calculateDistance(lat1, lon1, lat2, lon2, unit) {
 // The function check the user answer and then upload the data to the database.
 // The code is similar to the ne used to upload the data from WebApp.
 function checkAnswer(){
-	alert('Uploading answer');
+	alert('Uploading answer to the server');
 	htmlCollection[0].value = optionA;
 	htmlCollection[1].value = optionB;
 	htmlCollection[2].value = optionC;
@@ -99,9 +97,9 @@ function checkAnswer(){
 		if (htmlCollection[i].checked == true){
 			userAnswer = htmlCollection[i].value;
 			if (htmlCollection[i].value == correct){
-				alert('CORRECT!!! YOU ARE AWESOME!');
+				alert('Correct, Well done!');
 			} else {
-				alert('Nope, the answer is ' + correct);
+				alert('Sorry but the right answer is ' + correct);
 			}
 		}
 	}
@@ -110,7 +108,6 @@ function checkAnswer(){
 	console.log(postString);
 	processDataAnswer(postString);
 }
-	
 	
 var client;
 function processDataAnswer(postString) {

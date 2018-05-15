@@ -5,9 +5,7 @@
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      https://www.apache.org/licenses/LICENSE-2.0
+  You may obtain a copy of the License at https://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,14 +15,11 @@
 -->
 
 <!-- 
-	The QuizApp interface is developed by using Material Design. The original 
-	template is modified in order to match the requirements for the app.
+	The LocAsk interface has been developed using a template provided by Material Design to meet the functionalities required.
 -->
-
 <html lang="en">
   <head>
-  
-	<!--teh following links add the CSS and Javascript required for the leaflet map-->
+  	<!--links to add the CSS and Javascript scripts necessary for the leaflet map-->
 	<link rel="stylesheet"
 	href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
 	integrity="sha512- wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
@@ -34,29 +29,28 @@
 	integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
 	crossorigin=""></script>
 
-	<!--the following CSS is used to set the size of the map-->
+	<!--CSS used to define the size of the map-->
 	<style type="text/css">
 		#mapid{height:180px;}
 	</style>
-	
-    <meta charset="utf-8">
+	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="description" content="A template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Material Design Lite</title>
+    <title>LocAsk App</title>
 
     <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
+    <!--<meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" sizes="192x192" href="images/android-desktop.png">
 
     <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
+   <!-- <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Material Design Lite">
     <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <!--<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#3372DF">
 
     <link rel="shortcut icon" href="images/favicon.png">
@@ -86,7 +80,7 @@
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">UCL Quiz App</span>
+          <span class="mdl-layout-title">Geo-location Quiz</span>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
             
@@ -95,8 +89,8 @@
             <i class="material-icons">more_vert</i>
           </button>
           <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-            <a class="mdl-navigation__link" href="./UserGuide_QuizApp.html">User Guide</a> <!-- link to the user guide for the QuizApp -->
-            <a class="mdl-navigation__link" href = "https://drive.google.com/file/d/1Ij_-H0WcnlAqd15IzgNcW7zE-NjnKH1C/view?usp=sharing">More Info</a>
+            <a class="mdl-navigation__link" href="./UserGuide_LocAsk.html">User Guide</a> <!-- link to the user guide for the QuizApp -->
+
           </ul>
         </div>
       </header>
@@ -104,23 +98,26 @@
         <header class="demo-drawer-header">
           <img src="images/user.jpg" class="demo-avatar">
           <div class="demo-avatar-dropdown">
-            <span>Play the game!</span>
+            <span>Get going and start exploring!
+			Find a point of interest and answer the question!</span>
             <div class="mdl-layout-spacer"></div>
             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
               <i class="material-icons" role="presentation">arrow_drop_down</i>
               <span class="visuallyhidden">Accounts</span>
             </button>
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-              <li class="mdl-menu__item">Go towards the points!</li>
+              <li class="mdl-menu__item">Find all points!</li>
             </ul>
           </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
 		  <!-- the four option allow to load the points from the server, track the location, get new questions and start again by refreshing the view -->
-		  <a class="mdl-navigation__link" onclick="loadPointData()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Load Points</a>
-          <a class="mdl-navigation__link" onclick="trackLocation()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Track Location</a>
-          <a class="mdl-navigation__link" onclick="getDistance()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>Get Questions</a>
-		  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Clear View</a>
+		  <a class="mdl-navigation__link" onclick="loadPointData()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">control_point</i>Load points of interest</a>
+          <a class="mdl-navigation__link" onclick="trackLocation()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">explore</i>Enable location tracking</a>
+          <a class="mdl-navigation__link" onclick="getDistance()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">how_to_vote</i>Refresh questions</a>
+		  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">location_disabled</i>Disable location</a>
+		  <div class="mdl-layout-spacer"></div>
+		  <a class="mdl-navigation__link" href="./UserGuide_LocAsk.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>User help guide<span class="visuallyhidden">Help</span></a>
         </nav>
       </div>
 	  
@@ -132,21 +129,21 @@
 			</div>
         </div>
 		<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-            <div id="showLocation">Coordinates of the tracked location will be displayed here</div>
+            <div id="showLocation">Current location coordinates will be displayed here</div>
         </div>
 		<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
 		<form>
 			<!-- the DIVs within the form will change once the user gets the question from a point -->
-            <div id="showQuestions">The question will be displayed here</div>
-			<div id="showansw1">Answer A will be displayed here</div>
-			<div id="showansw2">Answer B will be displayed here</div>
-			<div id="showansw3">Answer C will be displayed here</div>
-			<div id="showansw4">Answer D will be displayed here</div>
+            <div id="showQuestions">The question will appear here</div>
+			<div id="showansw1">Option A will appear here</div>
+			<div id="showansw2">Option B will appear here</div>
+			<div id="showansw3">Option C will appear here</div>
+			<div id="showansw4">Option D will appear here</div>
 		</form>
         </div>
 		<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
 			<!-- the button allows to check the user's answer and save it into the database -->
-			<button id="button1" onclick="checkAnswer()">Click to check your answer</button>
+			<button id="button1" onclick="checkAnswer()">Submit your answer</button>
         </div>
       </main>
 	  
