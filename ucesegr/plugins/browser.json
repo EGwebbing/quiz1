@@ -1,0 +1,52 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "LocAsk"
+    },
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "LocAsk"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "LocAsk"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "LocAsk"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "LocAsk"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "LocAsk"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "LocAsk"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "LocAsk"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "LocAsk"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "LocAsk"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "LocAsk"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "LocAsk"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "LocAsk"
+    }
+  }
+}
