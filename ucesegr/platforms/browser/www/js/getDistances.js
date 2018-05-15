@@ -124,7 +124,7 @@ function dataUploadedAnswer() {
 	if (client.readyState == 4) {
 		// make an alert to show the response
 		alert("Data uploaded correctly") +
-		setTimeout(getDistance,20000);
+		setTimeout(getDistance,60000);
 		//document.getElementById("dataUploadResult").innerHTML = "Data uploaded correctly";
 	}
 }	
